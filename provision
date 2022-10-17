@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+source config
+PORT=$(./port)
+
+commands="""
+set -euo pipefail
+apt-get remove -qy apache2
+apt-get install -qy nginx certbot python3-certbot-nginx
+certbot certonly --non-interactive --agree-tos --email EMAIL --nginx -d DOMAIN
+rm -rf /etc/nginx/sites-enabled/default
+cat > /etc/nginx/sites-enabled/procto-$DOMAIN.conf
+service nginx restart
+"""
+
+nginx_config="""
+server {
+    listen 443 ssl;
+    server_name DOMAIN;
+    ssl_certificate     /etc/letsencrypt/live/DOMAIN/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/DOMAIN/privkey.pem;
+    location / {
+        proxy_set_header Host \$http_host;
+        proxy_redirect off;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Scheme \$scheme;
+        proxy_pass http://localhost:PORT/;
+    }
+}
+"""
+
+commands="$(echo "$commands" | sed "s/EMAIL/$EMAIL/g" | sed "s/DOMAIN/$DOMAIN/g")"
+nginx_config="$(echo "$nginx_config" | sed "s/DOMAIN/$DOMAIN/g" | sed "s/PORT/$PORT/g")"
+ssh "$SSH_USER@$DOMAIN" "$commands" <<< "$nginx_config"

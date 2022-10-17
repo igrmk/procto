@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+source config
+PORT=$(./port)
+SOCKET="/tmp/$DOMAIN-$PORT-socket"
+
+if [[ -S "$SOCKET" ]]; then
+    echo Already started on port $PORT
+    exit
+fi
+
+ssh -R $PORT:localhost:$PORT -M -S "$SOCKET" -fNT "$DOMAIN"
+echo Started on port $PORT
