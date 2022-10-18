@@ -4,7 +4,7 @@ Procto
 A script to set up a reverse proxy VM with
 
   * Let's Encrypt certificate
-  * Nginx to proxy HTTPS to HTTP
+  * Nginx to proxy remote HTTPS to remote HTTP
   * SSH to proxy remote HTTP to local HTTP
 
 
