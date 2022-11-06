@@ -7,11 +7,14 @@ A script to set up a reverse proxy VM with
   * Nginx to proxy remote HTTPS to remote HTTP
   * SSH to proxy remote HTTP to local HTTP
 
-
 Usage
 -----
 
-  * Clone it, copy `example.conf` to `~/.procto/<config name>.conf` and fill it
-  * Use `provision <config name>` command to provision your remote VM
-  * Use `start <config name>` command to proxy remote HTTPS to local HTTP
-  * Use `stop <config name>` command to stop the proxy
+  * Get a cloud virtual machine
+  * Get a domain and point it to you virtual machine
+  * Clone this project to your local machine
+  * Add the project directory to your PATH
+  * Copy `example.conf` to `~/.procto/<your.domain>.conf` and fill it
+  * Use `procto-provision <your.domain>` command to provision your remote VM
+  * Use `procto-connect <your.domain>` command to proxy remote HTTPS to local HTTP
+  * Use `procto-disconnect <your.domain>` command to stop the proxy

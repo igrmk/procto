@@ -3,18 +3,19 @@ set -euo pipefail
 
 if [[ $# -ne 1 ]]
 then
-    echo Usage: $0 name
+    printf "%s\n" "Usage: $0 <your-domain>"
     exit 1
 fi
 
-config="$HOME/.procto/$1.conf"
-if [[ ! -f "$config" ]]
+DOMAIN="$1"
+CONFIG="$HOME/.procto/$DOMAIN.conf"
+if [[ ! -f "$CONFIG" ]]
 then
-    echo Config not found
+    printf "%s\n" "Config $CONFIG not found"
     exit 1
 fi
 
-source "$config"
+source "$CONFIG"
 PORT=$(./port "$DOMAIN")
 
 commands="""
