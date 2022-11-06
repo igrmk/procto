@@ -18,3 +18,5 @@ Usage
   * Use `procto-provision <your.domain>` command to provision your remote VM
   * Use `procto-connect <your.domain>` command to proxy remote HTTPS to local HTTP
   * Use `procto-disconnect <your.domain>` command to stop the proxy
+
+If you need to set up additional ssh parameters, you can add them to your `~/.ssh/config`.
