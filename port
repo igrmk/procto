@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 set -euo pipefail
-source config
-hash=$(md5sum <<< "$DOMAIN" | head -c 4)
+hash=$(md5sum <<< "$1" | head -c 4)
 echo $((16#$hash % (65536 - 1024) + 1024))
 

@@ -11,7 +11,7 @@ A script to set up a reverse proxy VM with
 Usage
 -----
 
-  * Clone it, copy `config.example` to `config` and fill it
-  * Use `provision` command to provision your remote VM
-  * Use `start` command to proxy remote HTTPS to local HTTP
-  * Use `stop` command to stop the proxy
+  * Clone it, copy `example.conf` to `~/.procto/<config name>.conf` and fill it
+  * Use `provision <config name>` command to provision your remote VM
+  * Use `start <config name>` command to proxy remote HTTPS to local HTTP
+  * Use `stop <config name>` command to stop the proxy

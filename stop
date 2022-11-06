@@ -1,8 +1,21 @@
 #!/usr/bin/bash
 set -euo pipefail
 
-source config
-PORT=$(./port)
+if [[ $# -ne 1 ]]
+then
+    echo Usage: $0 name
+    exit 1
+fi
+
+config="$HOME/.procto/$1.conf"
+if [[ ! -f "$config" ]]
+then
+    echo Config not found
+    exit 1
+fi
+
+source "$config"
+PORT=$(./port "$DOMAIN")
 SOCKET="/tmp/$DOMAIN-$PORT-socket"
 
 ssh -S "$SOCKET" -O exit "$DOMAIN"
