@@ -1,6 +1,8 @@
 #!/usr/bin/bash
 set -euo pipefail
 
+cd "$(dirname "$(readlink -f "$0")")"
+
 if [[ $# -ne 1 ]]
 then
     printf "%s\n" "Usage: $0 <your-domain>"
@@ -16,7 +18,8 @@ then
 fi
 
 source "$CONFIG"
-PORT=$(./port "$DOMAIN")
+source ./port
+PORT=$(port "$DOMAIN")
 SOCKET="/tmp/$DOMAIN-$PORT-socket"
 
 ssh -S "$SOCKET" -O exit "$DOMAIN"

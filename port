@@ -1,5 +1,5 @@
-#!/usr/bin/bash
-set -euo pipefail
-hash=$(md5sum <<< "$1" | head -c 4)
-echo $((16#$hash % (65536 - 1024) + 1024))
+port () {
+    hash=$(md5sum <<< "$1" | head -c 4)
+    echo $((16#$hash % (65536 - 1024) + 1024))
+}
 
