@@ -4,5 +4,5 @@ set -euo pipefail
 cd "$(dirname "$(readlink -f "$0")")"
 source ./config
 config "$@"
-ssh -S "$SOCKET" -O exit "$DOMAIN"
+ssh -S "$SOCKET" -O exit "$SSH_USER@$DOMAIN"
 

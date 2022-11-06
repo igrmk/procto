@@ -10,5 +10,5 @@ if [[ -S "$SOCKET" ]]; then
     exit
 fi
 
-ssh -R $PORT:localhost:$PORT -M -S "$SOCKET" -fNT "$DOMAIN"
+ssh -R $PORT:localhost:$PORT -M -S "$SOCKET" -fNT "$SSH_USER@$DOMAIN"
 echo Started on port $PORT
