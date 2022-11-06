@@ -1,0 +1,24 @@
+digraph {
+    rankdir = LR
+    pad = 0.5
+    bgcolor = white
+    node [penwidth = 0.6]
+    node [fontname = "Jetbrains Mono"]
+    edge [fontname = "Jetbrains Mono"]
+    node [fontsize = 11]
+    edge [fontsize = 9]
+    node [width = 1.5]
+    node [fillcolor = aliceblue]
+    node [imagescale = true]
+    node [shape = record]
+    node [style = "filled, rounded"]
+
+    Client
+    Internet
+    Server [label = "Your server"]
+    Localhost [label = "Your localhost"]
+
+    Client -> Internet [label = "HTTPS"]
+    Internet -> Server [label = "HTTPS"]
+    Server -> Localhost [label = "HTTP over SSH"]
+}

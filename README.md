@@ -7,6 +7,10 @@ A script to set up a reverse proxy VM with
   * Nginx to proxy remote HTTPS to remote HTTP
   * SSH to proxy remote HTTP to local HTTP
 
+It is basically poor man's ngrok alternative.
+
+![Diagram](diagrams/diagram.svg)
+
 Usage
 -----
 
