@@ -1,3 +1,8 @@
+port () {
+    hash=$(md5sum <<< "$1" | head -c 4)
+    echo $((16#$hash % (65536 - 1024) + 1024))
+}
+
 function config () {
     if [[ $# -ne 1 ]]
     then
@@ -14,7 +19,6 @@ function config () {
     fi
 
     source "$CONFIG"
-    source ./port
     PORT=$(port "$DOMAIN")
     SOCKET="/tmp/$DOMAIN-$PORT-socket"
 }
