@@ -1,0 +1,20 @@
+function config () {
+    if [[ $# -ne 1 ]]
+    then
+        printf "%s\n" "Usage: $0 <your-domain>"
+        exit 1
+    fi
+
+    DOMAIN="$1"
+    CONFIG="$HOME/.procto/$DOMAIN.conf"
+    if [[ ! -f "$CONFIG" ]]
+    then
+        printf "%s\n" "Config $CONFIG not found"
+        exit 1
+    fi
+
+    source "$CONFIG"
+    source ./port
+    PORT=$(port "$DOMAIN")
+    SOCKET="/tmp/$DOMAIN-$PORT-socket"
+}
