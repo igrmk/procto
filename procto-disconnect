@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 set -euo pipefail
 
-cd "$(dirname "$(readlink -f "$0")")"
+cd "$(dirname "$0")"
 source ./config
 config "$@"
 ssh -S "$SOCKET" -O exit "$SSH_USER@$DOMAIN"
