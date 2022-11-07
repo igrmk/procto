@@ -1,5 +1,4 @@
 digraph {
-    rankdir = LR
     pad = 0.5
     bgcolor = white
     node [penwidth = 0.6]
@@ -15,10 +14,12 @@ digraph {
 
     Client
     Internet
-    Server [label = "Your server"]
+    Server [label = "Your proxy server"]
     Localhost [label = "Your localhost"]
+    Service [label = "Your local service"]
 
-    Client -> Internet [label = "HTTPS"]
-    Internet -> Server [label = "HTTPS"]
-    Server -> Localhost [label = "HTTP over SSH"]
+    Client -> Internet [label = " HTTPS "]
+    Internet -> Server [label = " HTTPS "]
+    Server -> Localhost [label = " HTTP over SSH "]
+    Localhost -> Service [label = " HTTP "]
 }
