@@ -14,8 +14,8 @@ It is basically poor man's ngrok alternative.
 Usage
 -----
 
-  * Get a cloud virtual machine
-  * Get a domain and point it to you virtual machine
+  * Get a Debian-based cloud virtual machine
+  * Get a domain and point it to your virtual machine
   * Clone this project to your local machine
   * Add the project directory to your PATH
   * Copy `example.conf` to `~/.procto/<your.domain>.conf` and fill it
