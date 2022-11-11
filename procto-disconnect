@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 set -euo pipefail
 
-source "$(dirname "$0")/config"
+source "$(dirname "$0")/procto-lib"
 config "$@"
 ssh -S "$SOCKET" -O exit "$SSH_USER@$DOMAIN"
 
