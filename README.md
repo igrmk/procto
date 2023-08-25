@@ -9,7 +9,25 @@ A script to set up a reverse proxy VM with
 
 It is basically poor man's ngrok alternative.
 
-![Diagram](diagrams/diagram.svg)
+```mermaid
+graph TB
+Client(Client on the Internet)
+Nginx(NGINX)
+SshServer(SSH server)
+SshClient(SSH client)
+Server(Your local server)
+Client -- HTTPS --> Nginx
+
+subgraph Your proxy server
+    Nginx --HTTP --> SshServer
+end
+
+SshServer -- HTTP over SSH --> SshClient
+
+subgraph Your localhost
+    SshClient -- HTTP --> Server
+end
+```
 
 Usage
 -----

@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-set -euo pipefail
-dot diagram.dot -Tsvg:cairo -o diagram.svg
