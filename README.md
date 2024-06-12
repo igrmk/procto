@@ -1,13 +1,15 @@
 Procto
 ======
 
-A script to set up a reverse proxy VM with
+A script to set up a reverse proxy exposing your localhost to the internet.
+It provisions a virtual machine with:
 
-  * Let's Encrypt certificate
-  * Nginx to proxy remote HTTPS to remote HTTP
-  * SSH to proxy remote HTTP to local HTTP
+- A Let's Encrypt certificate
+- Nginx to proxy from remote HTTPS to local HTTP
+- SSH to proxy from remote HTTP to local HTTP
 
-It is basically poor man's ngrok alternative.
+Essentially, it's a poor man's alternative to ngrok.
+
 
 ```mermaid
 graph TB
