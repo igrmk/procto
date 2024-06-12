@@ -5,7 +5,7 @@ A script to set up a reverse proxy exposing your localhost to the internet.
 It provisions a virtual machine with:
 
 - A Let's Encrypt certificate
-- Nginx to proxy from remote HTTPS to local HTTP
+- Nginx to proxy from remote HTTPS to remote HTTP
 - SSH to proxy from remote HTTP to local HTTP
 
 Essentially, it's a poor man's alternative to ngrok.
