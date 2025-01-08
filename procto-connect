@@ -1,13 +1,13 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 source "$(dirname "$0")/procto-lib"
 config "$@"
 
 if [[ -S "$SOCKET" ]]; then
-    echo Already started on port $PORT
+    echo Already started on port "$PORT"
     exit
 fi
 
-ssh -R $PORT:localhost:$PORT -M -S "$SOCKET" -fNT "$SSH_USER@$DOMAIN"
-echo Started on port $PORT
+ssh -R "$PORT:localhost:$PORT" -M -S "$SOCKET" -fNT "$SSH_USER@$DOMAIN"
+echo Started on port "$PORT"
